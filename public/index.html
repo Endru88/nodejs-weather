@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archiv počasí</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-image: url("img/obloha.webp");
+		}
+
+		form {
+			max-width: 500px;
+			margin: 0 auto;
+			padding: 30px;
+			background-color: rgba(0, 0, 0, 0.65);
+			border-radius: 8px;
+			box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+			animation: fade-in 1s ease-out;
+		}
+
+		h1 {
+			font-size: 32px;
+			font-weight: 600;
+			color: rgb(201, 201, 201);
+			text-align: center;
+			margin-bottom: 20px;
+			animation: slide-down 1s ease-out;
+		}
+
+		label {
+			font-size: 16px;
+			font-weight: 600;
+			color: rgb(194, 193, 193);
+			display: block;
+			margin-bottom: 10px;
+			animation: slide-up 1s ease-out;
+		}
+
+	
+        input[type=date], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: block;
+			border: none;
+			border-radius: 6px;
+			background-color: #5a5a5ab6;
+			box-sizing: border-box;
+			font-size: 16px;
+			color: rgb(211, 210, 210);
+			animation: slide-up 1s ease-out;
+		}
+        input[type=number], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: block;
+			border: none;
+			border-radius: 6px;
+			background-color: #5a5a5ab6;
+			box-sizing: border-box;
+			font-size: 16px;
+			color: rgb(211, 210, 210);
+			animation: slide-up 1s ease-out;
+		}
+        input[type=time], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: block;
+			border: none;
+			border-radius: 6px;
+			background-color: #5a5a5ab6;
+			box-sizing: border-box;
+			font-size: 16px;
+			color: rgb(211, 210, 210);
+			animation: slide-up 1s ease-out;
+		}
+
+		input[type=submit] {
+			background-color: #00b023c9;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			transition: background-color 0.2s ease-out;
+			animation: slide-up 1s ease-out;
+		}
+		::placeholder {
+			color: rgb(211, 211, 211);
+		}
+
+		input[type=submit]:hover {
+			background-color: #11bf04ae;
+		}
+        input[type=reset] {
+			background-color: #ff0000c6;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			transition: background-color 0.2s ease-out;
+			animation: slide-up 1s ease-out;
+		}
+
+		input[type=reset]:hover {
+			background-color: #ff0000b3;
+		}
+		button {
+			background-color: #0026ffc6;
+			color: #fff;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 6px;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+			transition: background-color 0.2s ease-out;
+			animation: slide-up 1s ease-out;
+		}
+
+		button:hover {
+			background-color: #5407d0b3;
+		}
+
+		@media screen and (max-width: 600px) {
+			form {
+				margin-top: 20px;
+			}
+		}
+
+		@keyframes fade-in {
+			from {opacity: 0;}
+			to {opacity: 1;}
+		}
+
+		@keyframes slide-down {
+			from {transform: translateY(-50px);}
+			to {transform: translateY(0);}
+		}
+
+		@keyframes slide-up {
+			from {transform: translateY(50px);}
+			to {transform: translateY(0);}
+		}
+	</style>
+</head>
+<body>
+    <h1>Počasí</h1>
+    <form action="/savedata" method="post">
+            <label for="datum">
+                Datum záznamu</label>
+                <input type="date" name="datum" id="datum">
+        
+       
+            <label for="datum">
+                Čas záznamu</label>
+            
+                <input type="time" name="cas" id="cas">
+           
+        
+            <label for="teplota" >Teplota</label>
+           
+                <input type="number"  name="teplota" id="teplota"
+                    placeholder="°C"min="-100" max="100">
+            
+            <label for="oblacnost" >Oblačnost</label>
+           
+                <select  name="oblacnost" id="oblacnost">
+                    <option value="Jasno">Jasno</option>
+                    <option value="Malá oblačnost">Malá oblačnost</option>
+                    <option value="Polojasno">Polojasno</option>
+                    <option value="Oblačno">Oblačno</option>
+                    <option value="Skoro zataženo">Skoro zataženo</option>
+                    <option value="Zataženo">Zataženo</option>
+                </select>
+          
+            <label for="vlhkost" >Vlhkost</label>
+           
+                <input type="number"  name="vlhkost" id="vlhkost"
+                    placeholder="%"min="0" max="100">
+          
+            <label for="srazky">Srážky</label>
+           
+                <input type="number" name="srazky" id="srazky"
+                    placeholder="mm">
+          
+           
+                    <input type="submit" value="Odeslat záznam">
+                    <input type="reset" value="Resetovat">
+
+					<button><a href="/pocasi">Záznamy</a></button>
+
+					
+           
+    </form>
+</body>
+</html>
